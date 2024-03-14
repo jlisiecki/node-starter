@@ -14,13 +14,20 @@ const config = {
   },
   resolve: {
     extensions: [".ts", ".js"],
-    plugins: [new TsconfigPathsPlugin()],
+    plugins: [
+      new TsconfigPathsPlugin({
+        configFile: path.join(process.cwd(), "tsconfig.json"),
+      }),
+    ],
   },
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        use: "swc-loader",
+        test: /\.(m?js|tsx?)$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: "swc-loader",
+        },
       },
     ],
   },
