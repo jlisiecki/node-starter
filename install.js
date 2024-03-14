@@ -34,7 +34,7 @@ fs.writeFileSync("package.json", JSON.stringify(packageJson, null, 2), "utf8");
 
 execSync(`rm -Rf ${path.join(process.cwd(), ".git")}`, { stdio: "inherit" });
 
-fs.writeFile(
+fs.writeFileSync(
   ".gitignore",
   `node_modules/
 dist/
