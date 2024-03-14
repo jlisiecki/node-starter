@@ -14,6 +14,7 @@ const config = {
     tsconfigRootDir: __dirname,
     project: ["./tsconfig.json"],
   },
+  ignorePatterns: ["**/dist/**/*.js"],
   rules: {
     // These off/not-configured-the-way-we-want lint rules we like & opt into
     "@typescript-eslint/no-explicit-any": "error",
