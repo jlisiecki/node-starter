@@ -3,6 +3,16 @@ const path = require("path");
 const fs = require("fs");
 const { execSync } = require("child_process");
 
+fs.writeFileSync(
+  ".gitignore",
+  `node_modules/
+dist/
+.DS_Store
+*.log
+.env
+`,
+);
+
 execSync(`rm -Rf ${path.join(process.cwd(), "package.json")}`, {
   stdio: "inherit",
 });
@@ -34,15 +44,7 @@ fs.writeFileSync("package.json", JSON.stringify(packageJson, null, 2), "utf8");
 
 execSync(`rm -Rf ${path.join(process.cwd(), ".git")}`, { stdio: "inherit" });
 
-fs.writeFileSync(
-  ".gitignore",
-  `node_modules/
-dist/
-.DS_Store
-*.log
-.env
-`,
-);
+
 
 execSync(`git init`, { stdio: "inherit" });
 
