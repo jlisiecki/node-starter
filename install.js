@@ -13,22 +13,18 @@ dist/
 `,
 );
 
-execSync(`rm -Rf ${path.join(process.cwd(), "package.json")}`, {
-  stdio: "inherit",
-});
-execSync(`rm -Rf ${path.join(process.cwd(), "package-lock.json")}`, {
-  stdio: "inherit",
-});
-execSync(`rm -Rf ${path.join(process.cwd(), "node_modules")}`, {
-  stdio: "inherit",
-});
-execSync(`npm init --yes`, { stdio: "inherit" });
+const execSyncInherit = (command) => {
+  execSync(command, { stdio: "inherit" });
+};
 
-execSync(
-  `npm i -D @ianvs/prettier-plugin-sort-imports @swc/core @total-typescript/ts-reset @tsconfig/node18 @types/eslint @types/express @types/node @types/webpack-node-externals @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-prettier eslint-plugin-import eslint-plugin-isaacscript eslint-plugin-prettier nodemon prettier swc-loader ts-node tsconfig-paths tsconfig-paths-webpack-plugin typescript webpack webpack-cli webpack-node-externals`,
-  { stdio: "inherit" },
+execSyncInherit(`rm -Rf ${path.join(process.cwd(), "package.json")}`);
+execSyncInherit(`rm -Rf ${path.join(process.cwd(), "package-lock.json")}`);
+execSyncInherit(`rm -Rf ${path.join(process.cwd(), "node_modules")}`);
+execSyncInherit(`npm init --yes`);
+execSyncInherit(
+  `npm i -D @ianvs/prettier-plugin-sort-imports @swc/core @total-typescript/ts-reset @tsconfig/node20 @types/eslint @types/express @types/node @types/webpack-node-externals @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-prettier eslint-plugin-import eslint-plugin-isaacscript eslint-plugin-prettier nodemon prettier swc-loader ts-node tsconfig-paths tsconfig-paths-webpack-plugin typescript webpack webpack-cli webpack-node-externals`,
 );
-execSync(`npm i zod dotenv`, { stdio: "inherit" });
+execSyncInherit(`npm i zod dotenv`);
 
 const scripts = {
   dev: "nodemon src/index.ts",
@@ -37,17 +33,11 @@ const scripts = {
 };
 
 packageJson = JSON.parse(fs.readFileSync("package.json", "utf8"));
-
 packageJson.scripts = scripts;
-
 packageJson.main = "dist/index.js";
 
 fs.writeFileSync("package.json", JSON.stringify(packageJson, null, 2), "utf8");
 
-execSync(`rm -Rf ${path.join(process.cwd(), ".git")}`, { stdio: "inherit" });
-
-
-
-execSync(`git init`, { stdio: "inherit" });
-
-execSync(`rm -Rf ${path.join(process.cwd(), "install.js")}`,{stdio: 'inherit'});
+execSyncInherit(`rm -Rf ${path.join(process.cwd(), ".git")}`);
+execSyncInherit(`git init`);
+execSyncInherit(`rm -Rf ${path.join(process.cwd(), "install.js")}`);
