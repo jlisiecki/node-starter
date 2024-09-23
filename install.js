@@ -3,6 +3,38 @@ const path = require("path");
 const fs = require("fs");
 const { execSync } = require("child_process");
 
+const DEPENDENCIES = ["zod", "dotenv"];
+
+const DEV_DEPENDENCIES = [
+  "@swc/core",
+  "@total-typescript/ts-reset",
+  "@tsconfig/node20",
+  "@types/eslint",
+  "@types/express",
+  "@types/node",
+  "@types/webpack-node-externals",
+  "@typescript-eslint/eslint-plugin",
+  "@typescript-eslint/parser",
+  "eslint",
+  "eslint-config-prettier",
+  // "eslint-plugin-import",
+  "eslint-plugin-isaacscript",
+  "eslint-plugin-prettier",
+  "nodemon",
+  "prettier",
+  "swc-loader",
+  "ts-node",
+  "tsconfig-paths",
+  "tsconfig-paths-webpack-plugin",
+  "typescript",
+  "webpack",
+  "webpack-cli",
+  "webpack-node-externals",
+  "@ianvs/prettier-plugin-sort-imports"
+];
+
+//-------------------------------------------------------------------------
+
 fs.writeFileSync(
   ".gitignore",
   `node_modules/
@@ -21,10 +53,8 @@ execSyncInherit(`rm -Rf ${path.join(process.cwd(), "package.json")}`);
 execSyncInherit(`rm -Rf ${path.join(process.cwd(), "package-lock.json")}`);
 execSyncInherit(`rm -Rf ${path.join(process.cwd(), "node_modules")}`);
 execSyncInherit(`npm init --yes`);
-execSyncInherit(
-  `npm i -D @ianvs/prettier-plugin-sort-imports @swc/core @total-typescript/ts-reset @tsconfig/node20 @types/eslint @types/express @types/node @types/webpack-node-externals @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-prettier eslint-plugin-import eslint-plugin-isaacscript eslint-plugin-prettier nodemon prettier swc-loader ts-node tsconfig-paths tsconfig-paths-webpack-plugin typescript webpack webpack-cli webpack-node-externals`,
-);
-execSyncInherit(`npm i zod dotenv`);
+execSyncInherit(`npm i -D ${DEV_DEPENDENCIES.join(" ")}`);
+execSyncInherit(`npm i ${DEPENDENCIES.join(" ")}`);
 
 const scripts = {
   dev: "nodemon src/index.ts",

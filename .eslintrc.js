@@ -2,7 +2,7 @@
 const config = {
   root: true,
   parser: "@typescript-eslint/parser",
-  plugins: ["isaacscript", "import"],
+  plugins: ["isaacscript" /*, "import"*/],
   extends: [
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
@@ -26,7 +26,7 @@ const config = {
       "error",
       { prefer: "type-imports", fixStyle: "inline-type-imports" },
     ],
-    "import/consistent-type-specifier-style": ["error", "prefer-inline"],
+    // "import/consistent-type-specifier-style": ["error", "prefer-inline"], - eslitn-plugin-import - not installed
 
     // For educational purposes we format our comments/jsdoc nicely
     "isaacscript/complete-sentences-jsdoc": "warn",
