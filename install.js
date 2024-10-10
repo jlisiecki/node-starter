@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const path = require("path");
 const fs = require("fs");
 const { execSync } = require("child_process");
@@ -9,16 +10,16 @@ const DEV_DEPENDENCIES = [
   "@swc/core",
   "@total-typescript/ts-reset",
   "@tsconfig/node20",
-  "@types/eslint",
+  "@types/eslint@8",
   "@types/express",
-  "@types/node",
+  "@types/node@20",
   "@types/webpack-node-externals",
   "@typescript-eslint/eslint-plugin",
   "@typescript-eslint/parser",
-  "eslint",
+  "eslint@8",
   "eslint-config-prettier",
-  // "eslint-plugin-import",
-  "eslint-plugin-isaacscript",
+  "eslint-plugin-import@2",
+  "eslint-plugin-isaacscript@3",
   "eslint-plugin-prettier",
   "nodemon",
   "prettier",

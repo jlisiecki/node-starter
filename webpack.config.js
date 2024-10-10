@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 const { TsconfigPathsPlugin } = require("tsconfig-paths-webpack-plugin");
